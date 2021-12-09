@@ -1,7 +1,3 @@
-from functools import reduce
-from operator import mul
-
-
 def get_neighbors(x, y, grid):
     neighbors = [(-1, 0), (0, 1), (1, 0), (0, -1)]
     vals = []
@@ -43,4 +39,9 @@ for y in range(len(grid)):
         visited |= basin
         basins.add(tuple(sorted(basin)))
 
-print(reduce(mul, sorted([len(x) for x in basins])[::-1][:3]))
+lenght = sorted([len(x) for x in basins], reverse=True)
+to_mul = lenght[0], lenght[1], lenght[2]
+res = 1
+for i in to_mul:
+    res *= i
+print(res)
